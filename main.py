@@ -10,6 +10,7 @@ import datetime as dt
 from urllib.parse import urlencode, quote, parse_qsl
 import xbmc
 import xbmcgui
+import xbmcvfs
 import xbmcplugin
 import xbmcaddon
 from synology import SynologyPhotos
@@ -44,7 +45,7 @@ def list_categories():
     for category in categories:
         list_item = xbmcgui.ListItem(label=category_titles[category])
 
-        addon_dir = xbmc.translatePath( addon.getAddonInfo('path') )
+        addon_dir = xbmcvfs.translatePath( addon.getAddonInfo('path') )
         art_url = os.path.join(addon_dir, 'resources', 'icon_'+category+'.png')
         
         list_item.setArt({'thumb': art_url,
